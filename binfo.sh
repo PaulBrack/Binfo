@@ -1,3 +1,8 @@
+cd ~
+
+#get the uprn
+uprn=$(cat uprn)
+
 #Get the web page
 binfo=$(curl 'https://www.manchester.gov.uk/Checkyourbincollectiondays' --data-raw 'mcc_bin_dates_uprn=000077086062&mcc_bin_dates_submit=Go')
 
