@@ -1,10 +1,9 @@
-sudo apt install pup
-sudo apt install git
-
 #set up the blinkt
 curl -sS https://get.pimoroni.com/blinkt | bash
 
 #set up the binfo script
+sudo apt install git
+sudo apt install pup
 mv ~/Binfo/binfo.sh /usr/lib/binfo.sh
 sudo chmod +x /usr/lib/binfo.sh
 echo -e "0 0 * * * /usr/lib/binfo.sh\n@reboot /usr/lib/binfo.sh" | crontab -
