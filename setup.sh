@@ -6,9 +6,9 @@ cd blinkt
 make
 sudo make install
 sudo systemctl enable pigpiod
-mv ~/Binfo/binfo.sh ~/binfo.sh
-sudo chmod +x ~/binfo.sh
-echo -e "0 0 * * * ~/binfo.sh\n@reboot ~/binfo.sh" | crontab -
+mv ~/Binfo/binfo.sh /usr/lib/binfo.sh
+sudo chmod +x /usr/lib/binfo.sh
+echo -e "0 0 * * * /usr/lib/binfo.sh\n@reboot /usr/lib/binfo.sh" | crontab -
 read -p "Please enter your UPRN " uprn
-echo $uprn > ~/uprn
-sudo ../binfo.sh
+echo $uprn > /usr/lib/uprn
+sudo /usr/lib/binfo.sh
