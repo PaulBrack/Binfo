@@ -2,6 +2,7 @@
 curl -sS https://get.pimoroni.com/blinkt | bash
 
 #Set up the binfo script
+cd ~
 sudo apt install git
 sudo apt install pup
 mv ~/Binfo/binfo.sh /usr/lib/binfo.sh
