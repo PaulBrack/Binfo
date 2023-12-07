@@ -11,9 +11,9 @@ today=$(date +'%e %b %Y' | xargs)
 
 #Get binfo
 bluebin=$(echo $binfo | pup 'div.collection h3:contains("Blue") + p text{}' | awk '{print $4, $5, $6}')
-brownbin=$(echo $binfo | pup 'div.collection h3:contains("Brown") + p text{}' | awk '{print $4, $5, $6}'
-greenbin=$(echo $binfo | pup 'div.collection h3:contains("Green") + p text{}' | awk '{print $4, $5, $6}'
-blackbin=$(echo $binfo | pup 'div.collection h3:contains("Black") + p text{}' | awk '{print $4, $5, $6}'
+brownbin=$(echo $binfo | pup 'div.collection h3:contains("Brown") + p text{}' | awk '{print $4, $5, $6}')
+greenbin=$(echo $binfo | pup 'div.collection h3:contains("Green") + p text{}' | awk '{print $4, $5, $6}')
+blackbin=$(echo $binfo | pup 'div.collection h3:contains("Black") + p text{}' | awk '{print $4, $5, $6}')
 
 #Compare dates
 [[ "$bluebin" == "$today" ]] && blinkt 11000000 blue
