@@ -11,4 +11,4 @@ mv binfo.sh ~/binfo.sh
 sudo chmod +x ~/binfo.sh
 echo -e "0 0 * * * ~/binfo.sh\n@reboot ~/binfo.sh" | crontab -
 read -p "Please enter your UPRN " uprn
-echo $uprn > uprn
+echo $uprn > ~/uprn
