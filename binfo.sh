@@ -1,4 +1,4 @@
-cd ~
+cd ~/Binfo
 
 #get the uprn
 uprn=$(cat uprn)
