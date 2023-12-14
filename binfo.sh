@@ -1,11 +1,11 @@
-#!/bin/bash
+!/bin/bash
 
 #For startup job, retry every 1s for 10 minutes if network is down - it may not be up yet
 counter=0
 until [ $counter -ge 600 ] || ip addr show wlan0 | grep -qE 'inet ([[:digit:]]+\.?)+'; do
-   sleep 1   
+   sleep 1
    ((counter++))
-   if [ $((foo%2)) -eq 0 ];
+   if [ $((counter%2)) -eq 0 ];
    then
       sudo blinkt blue
    else
@@ -30,14 +30,14 @@ greenbin=$(echo $binfo | pup 'div.collection h3:contains("Green") + p text{}' | 
 blackbin=$(echo $binfo | pup 'div.collection h3:contains("Black") + p text{}' | awk '{print $4, $5, $6}')
 
 # Check if all dates are valid
-if ! is_valid_date "$bluebin" || ! is_valid_date "$brownbin" || ! is_valid_date "$greenbin" || ! is_valid_date "$blackbin"; then
-   # Set Blinkt! to red if any date is invalid
-   sudo blinkt red
+if [ -n "$bluebin" ] && [ -n "$brownbin" ] && [ -n "$greenbin" ] && [ -n "$blackbin" ]; then
+    # Comparing Dates and Blinking LEDs
+    sudo blinkt black
+    [[ $(( $(date -d "$bluebin" +"%s") - $(date +"%s") )) -lt $((24 * 60 * 60)) ]] && sudo blinkt 11000000 blue
+    [[ $(( $(date -d "$brownbin" +"%s") - $(date +"%s") )) -lt $((24 * 60 * 60)) ]] && sudo blinkt 00110000 orange
+    [[ $(( $(date -d "$greenbin" +"%s") - $(date +"%s") )) -lt $((24 * 60 * 60)) ]] && sudo blinkt 00001100 green
+    [[ $(( $(date -d "$blackbin" +"%s") - $(date +"%s") )) -lt $((24 * 60 * 60)) ]] && sudo blinkt 00000011 white
 else
-   # Comparing Dates and Blinking LEDs
-   sudo blinkt black
-   [[ $(( $(date -d "$bluebin" +"%s") - $(date +"%s") )) -lt $((24 * 60 * 60)) ]] && sudo blinkt 11000000 blue
-   [[ $(( $(date -d "$brownbin" +"%s") - $(date +"%s") )) -lt $((24 * 60 * 60)) ]] && sudo blinkt 00110000 orange
-   [[ $(( $(date -d "$greenbin" +"%s") - $(date +"%s") )) -lt $((24 * 60 * 60)) ]] && sudo blinkt 00001100 green
-   [[ $(( $(date -d "$blackbin" +"%s") - $(date +"%s") )) -lt $((24 * 60 * 60)) ]] && sudo blinkt 00000011 white
+    # Set Blinkt! to red if any date is invalid
+    sudo blinkt red
 fi
