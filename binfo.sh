@@ -41,3 +41,5 @@ else
     # Set Blinkt! to red if any date is invalid
     sudo blinkt red
 fi
+
+wkhtmltoimage --width 400 --height 625 --crop-h 285 --crop-y 290 --disable-smart-width https://www.dictionary.com/e/word-of-the-day wotd.jpg
