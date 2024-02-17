@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 #For startup job, retry every 1s for 10 minutes if network is down - it may not be up yet
 counter=0
