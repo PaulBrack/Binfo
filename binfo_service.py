@@ -31,13 +31,13 @@ disp = ST7789.ST7789(
 lastimagepath = ''
 
 while(True):
-    if !GPIO.input(5):
+    if not GPIO.input(5):
         imagepath = 'wotd.jpg'
-    elif !GPIO.input(6):
+    elif not GPIO.input(6):
         imagepath = 'wotd.jpg'
-    elif !GPIO.input(16):
+    elif not GPIO.input(16):
         imagepath = 'wotd.jpg'
-    elif !GPIO.input(24):
+    elif not GPIO.input(24):
         imagepath = 'wotd.jpg'
     else:
         imagepath = 'wotd.jpg'
